@@ -10,6 +10,8 @@ RUN apt-get update -qq && \
 ######For SSL purposes
 ADD snippets/ /etc/nginx/snippets/
 RUN mkdir -p /etc/ssl/certs && mkdir -p /etc/ssl/private
+RUN rm -rf /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/nginx.conf
 ##############################
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
