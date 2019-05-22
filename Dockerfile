@@ -21,6 +21,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     libboost-program-options-dev libboost-system-dev libboost-thread-dev \
     libpcap-dev libreadline-dev libssl-dev rng-tools 
 
+ADD geoip /etc/nginx/
+RUN cd /etc/nginx/geoip && \ 
+    gunzip GeoIP.dat.gz && \
+    gunzip GeoLiteCity.dat.gz
+
 CMD ["nginx", "-g", "daemon off;"]
 
 #http://www.geoffstratton.com/install-latest-nginx-source-ubuntu-1604
