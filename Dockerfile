@@ -21,7 +21,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     libboost-program-options-dev libboost-system-dev libboost-thread-dev \
     libpcap-dev libreadline-dev libssl-dev rng-tools 
 
-COPY geoip /etc/nginx/geoip
+
+RUN mkdir -p /etc/nginx/geoip
+COPY ./geoip/ /geoip /etc/nginx/geoip/
+#COPY geoip /etc/nginx/geoip
 
 RUN cd /etc/nginx/geoip && \ 
     gunzip GeoIP.dat.gz && \
