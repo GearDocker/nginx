@@ -23,7 +23,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 
 
 RUN mkdir -p /etc/nginx/geoip
-COPY ./geoip/ /geoip /etc/nginx/geoip/
+ADD GeoIP.dat.gz  /etc/nginx/geoip/GeoIP.dat.gz
+ADD GeoLiteCity.dat.gz /etc/nginx/geoip/GeoLiteCity.dat.gz
+
+#COPY ./geoip/ /etc/nginx/geoip/
 #COPY geoip /etc/nginx/geoip
 
 RUN cd /etc/nginx/geoip && \ 
